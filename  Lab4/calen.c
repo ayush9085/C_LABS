@@ -1,34 +1,29 @@
-#include <stdio.h>
+ #include <stdio.h>
 
 int main() {
-    
-    int year, total_days, day;
-
-    printf("Enter the year: ");
+    int year;
+    printf("Enter a year: ");
     scanf("%d", &year);
 
-    total_days = (year - 1) * 365;
-    total_days += (year - 1) / 4;
-    total_days -= (year - 1) / 100;
-    total_days += (year - 1) / 400;
+    // Days count from 01/01/0001 to 01/01/year
+    long totalDays = 0;
 
-    day = total_days % 7;
-
-    if (day == 0) {
-        printf("The day on 1st January of %d is Monday.\n", year);
-    } else if (day == 1) {
-        printf("The day on 1st January of %d is Tuesday.\n", year);
-    } else if (day == 2) {
-        printf("The day on 1st January of %d is Wednesday.\n", year);
-    } else if (day == 3) {
-        printf("The day on 1st January of %d is Thursday.\n", year);
-    } else if (day == 4) {
-        printf("The day on 1st January of %d is Friday.\n", year);
-    } else if (day == 5) {
-        printf("The day on 1st January of %d is Saturday.\n", year);
-    } else if (day == 6) {
-        printf("The day on 1st January of %d is Sunday.\n", year);
+    for (int i = 1; i < year; i++) {
+        // Check for leap year
+        if ((i % 4 == 0 && i % 100 != 0) || (i % 400 == 0)) {
+            totalDays += 366;
+        } else {
+            totalDays += 365;
+        }
     }
+
+    // 01/01/0001 was Monday, so day = (totalDays % 7)
+    int dayOfWeek = (totalDays) % 7;
+
+    // 0 = Monday, 1 = Tuesday, ..., 6 = Sunday
+    char *days[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+
+    printf("1st January %d is a %s\n", year, days[dayOfWeek]);
 
     return 0;
 }
