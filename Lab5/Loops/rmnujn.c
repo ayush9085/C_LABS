@@ -1,4 +1,4 @@
-#include <stdio.h>
+ #include <stdio.h>
 
 int main() {
     int L;
@@ -8,20 +8,21 @@ int main() {
 
     printf("Ramanujan numbers up to %d are:\n", L);
 
+    // Check each number from 1 to L
     for (int n = 1; n <= L; n++) {
-        int count = 0; // count of ways to express n as sum of two cubes
+        int count = 0;
 
-        // check all pairs (a, b) such that a^3 + b^3 = n
-        for (int a = 1; a*a*a < n; a++) {
-            for (int b = a; b*b*b < n; b++) {  // b >= a to avoid repetition
+        // Try all pairs a, b
+        for (int a = 1; a*a*a <= n; a++) {
+            for (int b = a; b*b*b <= n; b++) {
                 if (a*a*a + b*b*b == n) {
-                    count++;
+                    count++;  // found one way
                 }
             }
         }
 
         if (count >= 2) {
-            printf("%d\n", n);
+            printf("%d\n", n);  // print if 2 or more ways
         }
     }
 

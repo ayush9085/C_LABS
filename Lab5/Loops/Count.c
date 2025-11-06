@@ -6,16 +6,14 @@ int main() {
 
     do {
         printf("Enter a number: ");
+        scanf("%d", &num);
 
-        // keep asking until user enters a valid integer
-        while (scanf("%d", &num) != 1) {
-            printf(" Invalid input! Please enter an integer: ");
-            scanf("%*s");  // discard wrong input (searched on gpt)
-        }
-
-        if (num > 0) pos++;
-        else if (num < 0) neg++;
-        else zero++;
+        if (num > 0)
+            pos++;
+        else if (num < 0)
+            neg++;
+        else
+            zero++;
 
         count++;
 

@@ -1,5 +1,5 @@
 //WAP to read a list of integers and store it in a single dimensional array. Write a C program to print the second largest integer in a list of integers.
- #include <stdio.h>
+#include <stdio.h>
 
 int main() {
     int n;
