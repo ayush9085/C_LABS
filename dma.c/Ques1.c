@@ -13,12 +13,14 @@ void printArray(int *arr, int n);
 int* insertAtPosition(int *arr, int *n, int element, int pos);
 
 void inputArray(int *arr, int n) {
+    printf("Enter %d elements: ", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
 }
 
 void printArray(int *arr, int n) {
+    printf("Array after insertion: ");
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
@@ -37,12 +39,18 @@ int* insertAtPosition(int *arr, int *n, int element, int pos) {
 
 int main() {
     int n, element, pos;
+
+    printf("Enter number of elements: ");
     scanf("%d", &n);
 
     int *arr = (int *)malloc(n * sizeof(int));
+
     inputArray(arr, n);
 
+    printf("Enter element to insert: ");
     scanf("%d", &element);
+
+    printf("Enter position (1-based index): ");
     scanf("%d", &pos);
 
     arr = insertAtPosition(arr, &n, element, pos);
